@@ -13,7 +13,6 @@
 """Base class for a provider."""
 
 from abc import ABC, abstractmethod
-
 from qiskit.providers.exceptions import QiskitBackendNotFoundError
 
 
@@ -57,7 +56,7 @@ class ProviderV1(Provider, ABC):
         return backends[0]
 
     @abstractmethod
-    def backends(self, name=None, **kwargs):
+    def backends(self, name=None,filters=None, **kwargs):
         """Return a list of backends matching the specified filtering.
 
         Args:
@@ -76,4 +75,9 @@ class ProviderV1(Provider, ABC):
         By default, it is assumed that two `Providers` from the same class are
         equal. Subclassed providers can override this behavior.
         """
+
+
         return type(self).__name__ == type(other).__name__
+
+
+
